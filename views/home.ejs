@@ -1,5 +1,56 @@
 <%- include('partials/header') -%>
-<div class="container">
-  
+<div class="container mt-5 pt-md-5">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-8">
+      <div class="container border p-4">
+        <form class="" action="/" method="post">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Number of Days</span>
+            <input type="number" class="form-control" name="numberOfDays" value=1 min=1 max=7 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Number of Meals</span>
+            <input type="number" class="form-control" name="numberOfMeals" value=1 min=1 max=10 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="container-fluid px-0 d-flex justify-content-end">
+            <button type="submit" class="btn btn-dark ">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row mt-3">
+    <div class="col"></div>
+    <div class="col-8">
+      <div class="<%= isHidden %>">
+        <% listOfMeals.forEach(day => { %>
+        <div class="card border my-1">
+          <h3 class="card-header">Day <%= day.day %></h3>
+          <div class="card-body row">
+            <% day.meals.forEach(meal => { %>
+            <div class="card col-6">
+              <div class="card-body">
+                <h5 class="card-title"><%= meal.name %></h5>
+                <ul class="list-group list-group-flush">
+                  <% meal.ingredients.forEach(ingredient => { %>
+                  <li class="list-group-item">
+                    <%= ingredient %>
+                  </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
 </div>
 <%- include('partials/footer'); -%>
